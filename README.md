@@ -1,6 +1,6 @@
 # Git Tutorial
 
-- 원격지에서 수정
-- 원격지에서 수정 2번째
-- 사실 merge를 했습니다.
-- 고의 충돌 발생
+- modified from remote
+- modified from remote * 2
+- merged
+- make conflict situation
