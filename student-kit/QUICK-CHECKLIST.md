@@ -358,3 +358,46 @@ git lg
 - `--mixed`는 staging 상태를 어떻게 바꾸는가
 - `--hard`는 working tree까지 어떻게 바꾸는가
 - `reflog`에서 사라진 commit 흔적을 다시 찾을 수 있는가
+
+## 11 tag
+
+목표: tag가 branch처럼 움직이는 포인터가 아니라, 특정 commit에 붙는 고정된 이름표라는 점을 확인합니다.
+
+이 실습 저장소는 내부적으로 `scenario/*` 태그를 이미 사용하고 있으므로, 여기서는 `release/*` 패턴만 필터링해서 봅니다.
+
+```bash
+./bin/reset-lab tag
+git switch main
+git lg
+git tag --list 'release/*'
+git tag release/v1.0.0 HEAD~1
+git tag -a release/v1.1.0 -m "Release v1.1.0" HEAD
+git tag --list 'release/*'
+git show --no-patch release/v1.0.0
+git show --no-patch release/v1.1.0
+```
+
+이제 `main`을 한 commit 더 진행해 보고 tag가 그대로인지 확인합니다.
+
+```bash
+printf '\nNEXT_RELEASE=prepare-v1.1.1\n' >> config.txt
+git commit -am "Prepare next release note"
+git rev-parse --short main
+git rev-parse --short release/v1.1.0
+```
+
+그다음 detached HEAD와 tag 삭제를 확인합니다.
+
+```bash
+git switch --detach release/v1.0.0
+git status -sb
+git switch main
+git tag -d release/v1.0.0
+git tag --list 'release/*'
+```
+
+체크:
+- `main`이 앞으로 가도 `release/v1.1.0`은 그대로인가
+- lightweight tag와 annotated tag의 차이를 설명할 수 있는가
+- tag를 checkout하면 왜 detached HEAD가 되는가
+- tag를 지워도 commit은 남아 있는가

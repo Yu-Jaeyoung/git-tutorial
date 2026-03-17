@@ -35,6 +35,7 @@ git lg
 8. `cherry-pick`
 9. `revert`
 10. `reset`
+11. `tag`
 
 `rebase-conflict`는 별도 시나리오라기보다 `rebase` 단계 안에서 함께 실습하는 abort drill입니다.
 

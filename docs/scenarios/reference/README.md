@@ -12,6 +12,7 @@
 
 - `./bin/reset-lab <scenario>`: 실습 저장소 안에서 특정 시나리오 시작 상태로 복원합니다. `<scenario>`에는 `merge-ff`, `stash`, `rebase` 같은 실제 시나리오 이름이 들어갑니다.
 - `git lg`: 실습 저장소에 미리 등록된 alias입니다. 현재 수업용 브랜치 그래프를 짧고 읽기 쉽게 보여줍니다.
+- `git lga`: 숨겨진 시나리오 태그까지 포함해 전체 ref 그래프를 봅니다. 태그나 숨은 참조까지 확인할 때 씁니다.
 - `git status -sb`: 현재 브랜치와 working tree 상태를 짧게 보여줍니다. `-s`는 short, `-b`는 branch입니다.
 - `git switch <branch>`: 작업 브랜치를 바꿉니다. `<branch>`에는 `main`, `feature/login` 같은 브랜치 이름이 들어갑니다.
 - `git log --oneline <branch>`: 특정 브랜치의 commit 목록을 한 줄씩 확인합니다.

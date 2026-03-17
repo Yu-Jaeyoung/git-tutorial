@@ -56,6 +56,7 @@ Available scenarios:
 - cherry-pick
 - revert
 - reset
+- tag
 
 `git lg` shows the current teaching branches only.
 Use `git lga` when you want to inspect every ref, including scenario tags.
@@ -112,6 +113,7 @@ Scenarios:
   cherry-pick
   revert
   reset
+  tag
 USAGE
 }
 
@@ -212,6 +214,10 @@ set_scenario_branches() {
       ;;
     reset)
       git branch -f main scenario/reset/main >/dev/null
+      git switch -q main
+      ;;
+    tag)
+      git branch -f main scenario/tag/main >/dev/null
       git switch -q main
       ;;
     *)
@@ -633,6 +639,20 @@ git commit -m "Add rollback drill note" >/dev/null
 git tag scenario/reset/main HEAD
 git switch -q main
 git branch -D tmp/reset-main >/dev/null
+
+git switch -q -c tmp/tag-main checkpoint/base
+printf '\nRelease prep: define tag practice checkpoints.\n' >> README.md
+git add README.md
+git commit -m "Document release prep note" >/dev/null
+printf '\nRELEASE_CHANNEL=stable\n' >> config.txt
+git add config.txt
+git commit -m "Mark stable release channel" >/dev/null
+printf '\n## Tag lab\n- define release names\n- practice detached HEAD\n' >> docs/guide.md
+git add docs/guide.md
+git commit -m "Add tag lab checklist" >/dev/null
+git tag scenario/tag/main HEAD
+git switch -q main
+git branch -D tmp/tag-main >/dev/null
 
 git switch -q main
 

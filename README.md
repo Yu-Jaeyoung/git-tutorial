@@ -1,6 +1,6 @@
 # Git Workshop Kit
 
-`merge`, `rebase`, `interactive rebase`, `cherry-pick`, `stash`, `worktree`, `revert`, `reset`, `reflog`를 실습 중심으로 가르칠 수 있도록 만든 Git 워크숍 자료 저장소입니다.
+`merge`, `rebase`, `interactive rebase`, `cherry-pick`, `stash`, `worktree`, `revert`, `reset`, `reflog`, `tag`를 실습 중심으로 가르칠 수 있도록 만든 Git 워크숍 자료 저장소입니다.
 
 ## 포함 내용
 
@@ -42,6 +42,7 @@ interactive-rebase
 cherry-pick
 revert
 reset
+tag
 ```
 
 ## 권장 운영 방식

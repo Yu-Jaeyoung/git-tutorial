@@ -36,6 +36,10 @@
 4. [09-revert](09-revert/README.md): 공유된 실수를 안전하게 취소하는 법
 5. [10-reset](10-reset/README.md): `--soft`, `--mixed`, `--hard`와 `reflog` 복구를 익히는 법
 
+### Extension
+
+1. [11-tag](11-tag/README.md): branch와 tag의 차이, lightweight와 annotated tag, detached HEAD를 익히는 법
+
 ## 읽는 법
 
 - 먼저 [00-setting](00-setting/README.md)에서 실습 환경을 준비합니다.
