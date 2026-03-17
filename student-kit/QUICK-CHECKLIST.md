@@ -118,6 +118,9 @@ git stash list
 ```bash
 ./bin/reset-lab worktree
 git lg
+printf '\nLOGIN_COPY=draft-in-progress\n' >> app.txt
+printf '\n- note while login work is in progress\n' >> docs/guide.md
+git status -sb
 git worktree list
 mkdir -p ../git-workshop-worktrees
 git worktree add ../git-workshop-worktrees/hotfix-typo -b hotfix/typo main
@@ -132,13 +135,12 @@ printf '\n- typo fix shipped from hotfix branch\n' >> README.md
 git commit -am "Fix typo notice from hotfix worktree"
 ```
 
-원래 작업 디렉터리로 돌아와 feature 작업을 계속합니다.
+원래 작업 디렉터리로 돌아와, 아까 수정하던 내용이 그대로 남아 있는지 먼저 확인합니다.
 
 ```bash
 cd -
-git switch feature/login
-printf '\nLOGIN_COPY=ready-for-qa\n' >> app.txt
-git commit -am "Refine login copy in main worktree"
+git status -sb
+git commit -am "Continue login work after hotfix"
 git lg
 ```
 
@@ -152,7 +154,9 @@ git worktree list
 
 체크:
 - 같은 저장소를 두 디렉터리에서 보고 있는가
+- 현재 worktree가 dirty한 상태에서도 새 worktree를 열 수 있었는가
 - hotfix용 디렉터리와 원래 디렉터리가 다른 브랜치를 동시에 checkout하고 있는가
+- 원래 디렉터리로 돌아왔을 때 수정 중이던 내용이 그대로 남아 있었는가
 - `git worktree list` 전후를 비교했을 때 목록이 어떻게 달라지는가
 - `git worktree remove` 뒤에 보조 디렉터리와 등록 정보가 함께 정리되었는가
 - `stash` 대신 `worktree`를 쓰는 게 더 좋은 상황을 말할 수 있는가
