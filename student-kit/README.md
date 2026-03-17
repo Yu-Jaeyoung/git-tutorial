@@ -31,11 +31,12 @@ git lg
 4. `stash`
 5. `worktree`
 6. `rebase`
-7. `rebase-conflict`
-8. `interactive-rebase`
-9. `cherry-pick`
-10. `revert`
-11. `reset`
+7. `interactive-rebase`
+8. `cherry-pick`
+9. `revert`
+10. `reset`
+
+`rebase-conflict`는 별도 시나리오라기보다 `rebase` 단계 안에서 함께 실습하는 abort drill입니다.
 
 ## 진행 방식
 

@@ -1,6 +1,6 @@
 # Quick Checklist
 
-학생용 빠른 실습 카드입니다. 각 단계는 `시작 상태 만들기 -> 명령 실행 -> 그래프와 상태 확인` 순서로 진행합니다.
+학생용 빠른 실습 카드입니다. 교사용 시나리오 문서와 같은 순서, 같은 명령 흐름을 기준으로 정리했습니다. 각 단계는 `시작 상태 만들기 -> 명령 실행 -> 그래프와 상태 확인` 순서로 진행합니다.
 
 ## 01 merge-ff
 
@@ -8,10 +8,11 @@
 
 ```bash
 ./bin/reset-lab merge-ff
-git status -sb
 git lg
+git switch main
 git merge feature/login
 git lg
+git status -sb
 ```
 
 체크:
@@ -25,10 +26,11 @@ git lg
 
 ```bash
 ./bin/reset-lab merge-commit
-git status -sb
 git lg
+git switch main
 git merge feature/login
 git lg
+git status -sb
 ```
 
 체크:
@@ -43,17 +45,23 @@ git lg
 ```bash
 ./bin/reset-lab conflict
 git lg
+git switch main
 git merge feature/login
 git status -sb
-sed -n '1,20p' config.txt
 ```
 
 그다음 `config.txt`를 직접 수정해서 원하는 결과로 정리한 뒤 아래를 실행합니다.
 
 ```bash
 git add config.txt
-git commit
+git commit -m "Resolve login rollout conflict"
 git lg
+```
+
+중단 복구를 따로 보고 싶다면 다시 시작 상태를 맞춘 뒤 아래도 해 봅니다.
+
+```bash
+git merge --abort
 ```
 
 체크:
@@ -71,18 +79,36 @@ printf '\nLOGIN_REVIEW=team-alpha\n' >> config.txt
 printf '\n- draft login QA checklist\n' >> docs/guide.md
 touch notes.txt
 git status -sb
+```
+
+먼저 `apply`를 확인합니다.
+
+```bash
 git stash push -u -m "login WIP before main review"
 git stash list
-git status -sb
 git switch main
 git switch feature/login
 git stash apply stash@{0}
 git status -sb
+git stash list
+```
+
+다음으로 `pop`을 확인합니다.
+
+```bash
+git reset --hard
+git clean -fd
+printf '\nTEMP_NOTE=remove_me\n' >> app.txt
+git stash push -m "tiny follow-up"
+git stash pop
+git status -sb
+git stash list
 ```
 
 체크:
 - `-u`가 없으면 `notes.txt`는 어떻게 되는가
 - `apply` 뒤에도 stash 항목이 남아 있는가
+- `pop` 뒤에는 stash 항목이 사라지는가
 - `stash`가 commit이 아니라 임시 보관이라는 점이 보이는가
 
 ## 05 worktree
@@ -91,80 +117,95 @@ git status -sb
 
 ```bash
 ./bin/reset-lab worktree
-git worktree list
-git worktree add ../git-workshop-worktrees/main-hotfix main
+git lg
+mkdir -p ../git-workshop-worktrees
+git worktree add ../git-workshop-worktrees/hotfix-typo -b hotfix/typo main
 git worktree list
 ```
 
-새 worktree에서 hotfix commit을 하나 만들어 봅니다.
+새 worktree에서 hotfix를 진행합니다.
 
 ```bash
-cd ../git-workshop-worktrees/main-hotfix
-printf '\nHOTFIX_READY=yes\n' >> config.txt
-git add config.txt
-git commit -m "Add hotfix marker on main"
+cd ../git-workshop-worktrees/hotfix-typo
+printf '\n- typo fix shipped from hotfix branch\n' >> README.md
+git commit -am "Fix typo notice from hotfix worktree"
+```
+
+원래 작업 디렉터리로 돌아와 feature 작업을 계속합니다.
+
+```bash
 cd -
+git switch feature/login
+printf '\nLOGIN_COPY=ready-for-qa\n' >> app.txt
+git commit -am "Refine login copy in main worktree"
 git lg
 ```
 
 체크:
 - 같은 저장소를 두 디렉터리에서 보고 있는가
-- 현재 디렉터리를 바꾸지 않고도 `main`을 수정할 수 있었는가
+- hotfix용 디렉터리와 원래 디렉터리가 다른 브랜치를 동시에 checkout하고 있는가
 - `stash` 대신 `worktree`를 쓰는 게 더 좋은 상황을 말할 수 있는가
 
 ## 06 rebase
 
 목표: feature branch를 최신 `main` 위로 다시 올리면서 commit hash가 바뀌는 점을 확인합니다.
 
+기본 rebase:
+
 ```bash
 ./bin/reset-lab rebase
 git lg
+git switch feature/payment
 git rebase main
 git lg
+git status -sb
+```
+
+같은 주제에서 충돌과 `--abort`도 바로 이어서 확인합니다.
+
+```bash
+./bin/reset-lab rebase-conflict
+git lg
+git switch feature/payment
+git rebase main
+git status -sb
+git rebase --abort
+git lg
+git status -sb
 ```
 
 체크:
 - 내용은 비슷해도 feature commit hash가 바뀌었는가
 - 그래프가 선형으로 정리되었는가
+- 충돌이 났을 때 `git rebase --abort`로 원래 그래프로 돌아왔는가
 - 이 작업이 “commit을 다시 쓰는 것”이라는 말을 설명할 수 있는가
 
-## 07 rebase-conflict
-
-목표: rebase 도중 충돌을 내고 `git rebase --abort`로 원래 상태로 돌아옵니다.
-
-```bash
-./bin/reset-lab rebase-conflict
-git lg
-git rebase main
-git status -sb
-git rebase --abort
-git lg
-```
-
-체크:
-- 어떤 파일에서 충돌이 났는가
-- `--abort` 뒤에 원래 그래프로 돌아왔는가
-- 충돌 해결 후 계속 진행하려면 어떤 명령이 필요한지 말할 수 있는가
-
-## 08 interactive-rebase
+## 07 interactive-rebase
 
 목표: 여러 commit을 의미 있는 단위로 정리합니다.
 
 ```bash
 ./bin/reset-lab interactive-rebase
 git lg
-git rebase -i HEAD~5
+git switch feature/payment
+git rebase -i main
 git lg
 ```
 
-편집기 안에서는 `pick`, `reword`, `squash`, `fixup`, `drop`을 바꿔 보세요.
+편집기 안에서는 아래 기준으로 바꿔 봅니다.
+
+- `pick`: `draft payment copy`
+- `reword`: `wip payment validation`
+- `squash`: `typo in payment validation`
+- `fixup`: `remove debug log`
+- `drop`: `obsolete sandbox note`
 
 체크:
 - 어떤 commit을 합쳤는가
 - commit 메시지가 더 읽기 좋아졌는가
 - 왜 보통 “공유하기 전 로컬 브랜치”에서만 이 작업을 하는지 설명할 수 있는가
 
-## 09 cherry-pick
+## 08 cherry-pick
 
 목표: 브랜치 전체가 아니라 특정 commit만 선택해서 가져옵니다.
 
@@ -172,8 +213,10 @@ git lg
 ./bin/reset-lab cherry-pick
 git lg
 git log --oneline hotfix/typo
+git switch main
 git cherry-pick <commit-hash>
 git lg
+git status -sb
 ```
 
 체크:
@@ -181,15 +224,17 @@ git lg
 - 새로 들어온 commit은 기존과 내용은 같지만 hash는 다른가
 - 왜 merge보다 cherry-pick이 더 적합한 상황인지 말할 수 있는가
 
-## 10 revert
+## 09 revert
 
 목표: 이미 남아 있는 commit을 지우지 않고, 되돌리는 새 commit을 만듭니다.
 
 ```bash
 ./bin/reset-lab revert
 git lg
-git revert HEAD --no-edit
+git switch main
+git revert --no-edit HEAD
 git lg
+git status -sb
 ```
 
 체크:
@@ -197,7 +242,7 @@ git lg
 - 되돌리는 새 commit이 추가되었는가
 - 왜 협업 브랜치에서는 `reset`보다 `revert`가 안전한가
 
-## 11 reset
+## 10 reset
 
 목표: `--soft`, `--mixed`, `--hard` 차이와 `reflog` 복구를 확인합니다.
 
@@ -214,6 +259,7 @@ git status -sb
 
 ```bash
 ./bin/reset-lab reset
+git lg
 git reset HEAD~1
 git status -sb
 ```
@@ -222,9 +268,17 @@ git status -sb
 
 ```bash
 ./bin/reset-lab reset
+git lg
 git reset --hard HEAD~1
 git status -sb
-git reflog --oneline
+git reflog --oneline -n 5
+```
+
+그다음 `reflog`에서 `Add rollback drill note` commit hash를 찾아 복구합니다.
+
+```bash
+git reset --hard <commit-hash>
+git lg
 ```
 
 체크:
