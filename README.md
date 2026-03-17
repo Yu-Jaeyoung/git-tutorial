@@ -11,6 +11,7 @@
 - 강사용 요약 치트시트: `docs/facilitator-cheatsheet.md`
 - 평가 체크리스트: `docs/assessment.md`
 - 실습용 Git 저장소 생성 스크립트: `scripts/setup-workshop-lab.sh`
+- 학생 배포본 폴더: `student-kit/`
 
 ## 빠른 시작
 
@@ -54,6 +55,12 @@ reset
 - 명령어보다 커밋 그래프를 먼저 읽게 합니다.
 - `reset`은 반드시 `reflog`와 함께 다룹니다.
 - 공유된 히스토리는 `revert`, 로컬 정리는 `reset`이라는 규칙을 반복합니다.
+
+## 학생 배포 방법
+
+- 학생에게는 `student-kit/` 폴더만 별도로 전달하면 됩니다.
+- 학생용 배포본에는 상세 시나리오 문서 대신 `setup-student-lab.sh`와 짧은 안내문만 들어 있습니다.
+- 학생은 `student-kit/README.md`를 보고 `./setup-student-lab.sh`로 실습 저장소를 만든 뒤, `QUICK-CHECKLIST.md` 순서대로 진행하면 됩니다.
 
 ## 문서 읽는 순서
 
