@@ -26,12 +26,6 @@ git lg
 git status -sb
 ```
 
-복구를 보여주고 싶다면 아래도 함께 소개합니다.
-
-```bash
-git cherry-pick --abort
-```
-
 ## 명령 참고
 
 - 공통 명령과 표기: [command-reference](../reference/README.md)
