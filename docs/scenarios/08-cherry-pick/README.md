@@ -2,7 +2,6 @@
 
 한 줄 요약: 브랜치 전체가 아니라 특정 commit 하나만 골라서 현재 브랜치에 적용하고 싶을 때 쓰는 도구입니다.
 
-- 수업 흐름: [Session 2 Lab](../../session-2-lab.md)
 - 비교 시나리오: [02-merge-commit](../02-merge-commit/README.md), [09-revert](../09-revert/README.md)
 
 ## 언제 쓰는가

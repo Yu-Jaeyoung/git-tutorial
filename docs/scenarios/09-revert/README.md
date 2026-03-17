@@ -2,7 +2,6 @@
 
 한 줄 요약: 이미 기록된 commit을 지우지 않고, 그 반대 내용을 가진 새 commit을 만들어 안전하게 취소하는 방식입니다.
 
-- 수업 흐름: [Session 2 Lab](../../session-2-lab.md)
 - 비교 시나리오: [10-reset](../10-reset/README.md)
 
 ## 언제 쓰는가

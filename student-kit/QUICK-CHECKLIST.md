@@ -205,6 +205,65 @@ git lg
 - commit 메시지가 더 읽기 좋아졌는가
 - 왜 보통 “공유하기 전 로컬 브랜치”에서만 이 작업을 하는지 설명할 수 있는가
 
+심화 1: `edit`와 `--abort`
+
+다시 시작 상태를 맞춘 뒤 첫 줄을 `edit`로 바꿔 rebase를 멈춰 봅니다.
+
+```bash
+./bin/reset-lab interactive-rebase
+git switch feature/payment
+git rebase -i main
+git status -sb
+git lg
+git rebase --abort
+git lg
+```
+
+심화 2: merge commit이 있는 상태 비교
+
+```bash
+./bin/reset-lab interactive-rebase
+git switch feature/payment
+git switch -c spike/payment-helper HEAD~3
+printf '\nMERGE_HELPER_NOTE=yes\n' >> README.md
+git commit -am "Add payment helper note from spike"
+git switch feature/payment
+printf '\nPAYMENT_COPY_PASS=yes\n' >> config.txt
+git commit -am "Note payment copy pass on feature"
+git merge --no-ff spike/payment-helper -m "Merge payment helper branch"
+git lg
+git rev-parse --short HEAD
+git rev-parse --short HEAD^
+git rev-parse --short HEAD^2
+git rev-parse --short HEAD~1
+git rev-parse --short HEAD~2
+```
+
+여기서 확인할 것:
+- `HEAD^2`는 merge commit일 때만 의미가 있는가
+- `HEAD~2`는 first-parent 기준으로 계산되는가
+- 같은 `HEAD~2`를 기준으로 할 때 기본 `git rebase -i HEAD~2`와 `git rebase -i --rebase-merges HEAD~2`의 todo가 다르게 보일 수 있다는 점을 이해했는가
+
+심화 3: 완료된 interactive rebase를 reflog로 복구
+
+이 실습은 “진행 중이면 `--abort`, 이미 끝났으면 `reflog + reset`”을 구분하는 드릴입니다.
+
+```bash
+./bin/reset-lab interactive-rebase
+git switch feature/payment
+git rebase -i main
+git lg
+git reflog show feature/payment --oneline -n 10
+git branch backup/after-interactive-rebase
+git reset --hard <rebase 전 커밋 해시>
+git lg
+```
+
+여기서 확인할 것:
+- 완료된 interactive rebase 뒤에는 `git rebase --abort`가 아니라 `reflog`를 봐야 하는가
+- `reset` 수업의 reflog 복구와 같은 패턴이 적용되는가
+- 현재 rewrite 결과를 남기고 싶다면 왜 백업 브랜치를 먼저 만드는가
+
 ## 08 cherry-pick
 
 목표: 브랜치 전체가 아니라 특정 commit만 선택해서 가져옵니다.
@@ -280,6 +339,8 @@ git reflog --oneline -n 5
 git reset --hard <commit-hash>
 git lg
 ```
+
+같은 원리는 완료된 `interactive rebase` 복구에도 그대로 적용됩니다. 즉, `reflog`는 `reset --hard`만 위한 도구가 아니라 “로컬 히스토리 재작성 전체의 안전망”이라고 이해하면 좋습니다.
 
 체크:
 - `--soft`는 무엇을 남기고 무엇만 되돌렸는가

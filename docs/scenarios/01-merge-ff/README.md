@@ -2,7 +2,6 @@
 
 한 줄 요약: `main`이 `feature/login`의 조상일 때 `merge`는 새 commit 없이 포인터만 앞으로 이동할 수 있습니다.
 
-- 수업 흐름: [Session 1 Lab](../../session-1-lab.md)
 - 비교 시나리오: [02-merge-commit](../02-merge-commit/README.md)
 
 ## 언제 쓰는가

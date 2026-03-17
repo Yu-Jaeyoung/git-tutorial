@@ -2,7 +2,6 @@
 
 한 줄 요약: 아직 commit하고 싶지 않은 변경사항을 잠깐 치워 두고 다른 작업으로 이동해야 할 때 `stash`를 씁니다.
 
-- 수업 흐름: [Session 1 Lab](../../session-1-lab.md)
 - 비교 시나리오: [05-worktree](../05-worktree/README.md)
 
 ## 언제 쓰는가

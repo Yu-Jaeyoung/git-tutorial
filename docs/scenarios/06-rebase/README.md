@@ -2,7 +2,6 @@
 
 한 줄 요약: feature 브랜치의 commit들을 최신 `main` 뒤로 다시 적용해, 더 직선적인 이력을 만드는 도구입니다.
 
-- 수업 흐름: [Session 2 Lab](../../session-2-lab.md)
 - 비교 시나리오: [02-merge-commit](../02-merge-commit/README.md), [07-interactive-rebase](../07-interactive-rebase/README.md)
 
 ## 언제 쓰는가

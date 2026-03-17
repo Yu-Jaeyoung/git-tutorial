@@ -2,7 +2,6 @@
 
 한 줄 요약: 양쪽 브랜치가 공통 조상 이후 각각 달라졌다면 `merge`는 두 부모를 가진 새 commit을 만듭니다.
 
-- 수업 흐름: [Session 1 Lab](../../session-1-lab.md)
 - 비교 시나리오: [01-merge-ff](../01-merge-ff/README.md), [06-rebase](../06-rebase/README.md)
 
 ## 언제 쓰는가
