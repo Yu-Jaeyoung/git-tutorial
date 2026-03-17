@@ -56,6 +56,13 @@ reset
 - 학생에게는 `student-kit/` 폴더만 별도로 전달하면 됩니다.
 - 학생용 배포본에는 상세 시나리오 문서 대신 `setup-student-lab.sh`와 짧은 안내문만 들어 있습니다.
 - 학생은 `student-kit/README.md`를 보고 `./setup-student-lab.sh`로 실습 저장소를 만든 뒤, `QUICK-CHECKLIST.md` 순서대로 진행하면 됩니다.
+- zip 배포본이 필요하면 `./scripts/package-student-kit.sh`를 실행합니다.
+
+```bash
+./scripts/package-student-kit.sh
+```
+
+기본 생성 경로는 `generated/git-workshop-student-kit.zip`입니다.
 
 ## 문서 읽는 순서
 
