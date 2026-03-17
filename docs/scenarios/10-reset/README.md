@@ -74,52 +74,6 @@ git reset --hard <reflog에서 찾은 "Add rollback drill note" 커밋 해시>
 git lg
 ```
 
-### 4. `interactive rebase` 복구와 연결해 보기
-
-이번에는 `reset` 시나리오가 아니라 `interactive rebase` 시나리오를 이용해, `reflog`가 단순히 `reset --hard` 복구용이 아니라 rewrite 복구에도 쓰인다는 점을 확인합니다.
-
-먼저 `interactive rebase`를 완료합니다.
-
-```bash
-./bin/reset-lab interactive-rebase
-git switch feature/payment
-git rebase -i main
-git lg
-```
-
-편집기에서는 아래처럼 정리하면 됩니다.
-
-- `pick`: `draft payment copy`
-- `reword`: `wip payment validation`
-- `squash`: `typo in payment validation`
-- `fixup`: `remove debug log`
-- `drop`: `obsolete sandbox note`
-
-이제 `reflog`를 확인합니다.
-
-```bash
-git reflog show feature/payment --oneline -n 10
-```
-
-브랜치 reflog를 보면 보통 `feature/payment`가 rebase되기 전 가리키던 commit이 더 직접적으로 보입니다. 현재 상태를 보존하고 싶다면 먼저 백업 브랜치를 하나 만듭니다.
-
-```bash
-git branch backup/after-interactive-rebase
-```
-
-그다음 `reflog`에서 찾은 rebase 전 commit으로 돌아갑니다.
-
-```bash
-git reset --hard <reflog에서 찾은 rebase 전 커밋 해시>
-git lg
-```
-
-관찰:
-
-- 완료된 `interactive rebase`는 `git rebase --abort`로는 되돌릴 수 없습니다.
-- 대신 `reflog`가 rebase 전 `HEAD` 이동 기록을 남겨 두기 때문에, `reset --hard`로 원래 브랜치 상태를 복구할 수 있습니다.
-- 이 패턴은 merge commit이 interactive rebase 과정에서 사라진 경우에도 같은 원리로 적용됩니다.
-
 ## 명령 참고
 
 - 공통 명령과 표기: [command-reference](../reference/README.md)
@@ -130,13 +84,14 @@ git lg
 - `--soft`, `--mixed`, `--hard`는 모두 `HEAD` 이동은 같고, index와 working tree 처리 범위만 다릅니다.
 - `git reset HEAD~1`은 `--mixed`와 같습니다.
 - `reflog`에는 최근 `HEAD` 이동 기록이 남아 있어서 로컬에서 잃어버린 commit을 찾는 데 도움이 됩니다.
-- `reflog`는 `reset --hard` 이후뿐 아니라 완료된 `interactive rebase` 복구에도 그대로 사용할 수 있습니다.
+- 같은 `reflog + reset` 패턴은 [07-interactive-rebase](../07-interactive-rebase/README.md)의 완료된 rewrite 복구 실습에서도 그대로 이어집니다.
 
 ## 핵심 개념
 
 - reset은 로컬 히스토리를 재정렬하는 데 강력하지만, 공유된 브랜치에서는 위험합니다.
 - 특히 `--hard`는 working tree까지 버리므로 가장 조심해야 합니다.
 - `reflog + reset` 조합은 “완료된 히스토리 재작성”을 되돌리는 마지막 안전망이라는 점이 중요합니다.
+- 다만 completed `interactive rebase` 복구 실습 자체는 [07-interactive-rebase](../07-interactive-rebase/README.md)에서 다루는 편이 더 자연스럽습니다.
 
 ## 자주 헷갈리는 포인트
 
