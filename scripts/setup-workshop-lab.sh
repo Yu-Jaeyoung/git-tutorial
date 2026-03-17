@@ -158,6 +158,7 @@ reset_common() {
   drop_branch_if_exists feature/login
   drop_branch_if_exists feature/payment
   drop_branch_if_exists hotfix/typo
+  drop_branch_if_exists hotfix/readme-typo
   git branch -f main checkpoint/base >/dev/null
 }
 
@@ -205,7 +206,7 @@ set_scenario_branches() {
       ;;
     cherry-pick)
       git branch -f main scenario/cherry-pick/main >/dev/null
-      git branch -f hotfix/typo scenario/cherry-pick/hotfix-typo >/dev/null
+      git branch -f hotfix/readme-typo scenario/cherry-pick/hotfix-readme-typo >/dev/null
       git switch -q main
       ;;
     revert)
@@ -547,7 +548,7 @@ EOF
 git add app.txt
 git commit -m "Update notification channel on main" >/dev/null
 git tag scenario/cherry-pick/main HEAD
-git switch -q -c tmp/cherry-pick-hotfix-typo checkpoint/base
+git switch -q -c tmp/cherry-pick-hotfix-readme-typo checkpoint/base
 cat <<'EOF' > README.md
 # Git Workshop Lab
 
@@ -578,10 +579,10 @@ cat <<'EOF' > docs/guide.md
 EOF
 git add docs/guide.md
 git commit -m "Clean up guide wording on hotfix branch" >/dev/null
-git tag scenario/cherry-pick/hotfix-typo HEAD
+git tag scenario/cherry-pick/hotfix-readme-typo HEAD
 git switch -q main
 git branch -D tmp/cherry-pick-main >/dev/null
-git branch -D tmp/cherry-pick-hotfix-typo >/dev/null
+git branch -D tmp/cherry-pick-hotfix-readme-typo >/dev/null
 
 git switch -q -c tmp/revert-main checkpoint/base
 cat <<'EOF' > config.txt

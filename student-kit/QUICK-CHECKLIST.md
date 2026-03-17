@@ -152,6 +152,13 @@ git worktree remove ../git-workshop-worktrees/hotfix-typo
 git worktree list
 ```
 
+브랜치가 남아 있다면 같은 worktree를 다시 열 수도 있습니다.
+
+```bash
+git worktree add ../git-workshop-worktrees/hotfix-typo hotfix/typo
+git worktree remove ../git-workshop-worktrees/hotfix-typo
+```
+
 체크:
 - 같은 저장소를 두 디렉터리에서 보고 있는가
 - 현재 worktree가 dirty한 상태에서도 새 worktree를 열 수 있었는가
@@ -159,6 +166,7 @@ git worktree list
 - 원래 디렉터리로 돌아왔을 때 수정 중이던 내용이 그대로 남아 있었는가
 - `git worktree list` 전후를 비교했을 때 목록이 어떻게 달라지는가
 - `git worktree remove` 뒤에 보조 디렉터리와 등록 정보가 함께 정리되었는가
+- `git worktree remove` 뒤에도 브랜치가 남아 있으면 다시 `add`로 복구할 수 있는가
 - `stash` 대신 `worktree`를 쓰는 게 더 좋은 상황을 말할 수 있는가
 
 ## 06 rebase
@@ -286,7 +294,7 @@ git lg
 ```bash
 ./bin/reset-lab cherry-pick
 git lg
-git log --oneline hotfix/typo
+git log --oneline hotfix/readme-typo
 git switch main
 git cherry-pick <commit-hash>
 git lg

@@ -60,6 +60,14 @@ git worktree remove ../git-workshop-worktrees/hotfix-typo
 git worktree list
 ```
 
+브랜치 `hotfix/typo`가 남아 있다면, 같은 worktree를 다시 열어 복구할 수도 있습니다.
+
+```bash
+git worktree add ../git-workshop-worktrees/hotfix-typo hotfix/typo
+git worktree list
+git worktree remove ../git-workshop-worktrees/hotfix-typo
+```
+
 ## 명령 참고
 
 - 공통 명령과 표기: [command-reference](../reference/README.md)
@@ -73,6 +81,7 @@ git worktree list
 - 브랜치 전환 때문에 현재 작업을 숨길 필요가 없습니다.
 - 원래 디렉터리로 돌아왔을 때 `git status -sb`에 아까 작업하던 변경이 그대로 남아 있는 점이 핵심입니다.
 - `git worktree remove` 전후로 목록을 비교하면 worktree 등록 정보와 디렉터리가 함께 정리되는 점이 보입니다.
+- `remove`된 worktree도 브랜치가 남아 있다면 `git worktree add <path> <branch>`로 다시 열 수 있습니다.
 
 ## 핵심 개념
 
@@ -85,6 +94,7 @@ git worktree list
 - 같은 branch를 두 worktree에서 동시에 checkout하는 데는 제약이 있습니다.
 - 현재 worktree에 수정 중인 파일이 있어도, 다른 branch를 가리키는 새 worktree를 여는 것은 가능합니다.
 - 실습 후 정리가 필요하면 `git worktree remove`를 사용합니다.
+- `git worktree remove`는 worktree 디렉터리를 지우는 것이지, 브랜치나 commit 자체를 지우는 명령은 아닙니다.
 - 미커밋 변경이 남아 있으면 삭제가 거절될 수 있고, 그때는 먼저 commit 하거나 `--force`를 신중히 사용해야 합니다.
 
 ## 비교 대상

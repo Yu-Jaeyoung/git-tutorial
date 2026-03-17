@@ -14,7 +14,7 @@
 ```bash
 ./bin/reset-lab cherry-pick
 git lg
-git log --oneline hotfix/typo
+git log --oneline hotfix/readme-typo
 ```
 
 ## 실습 절차

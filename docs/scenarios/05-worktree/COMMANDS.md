@@ -11,6 +11,7 @@
 - `git commit -am "Fix typo notice from hotfix worktree"`: tracked 파일 수정만 빠르게 commit 합니다. `-a`는 자동 stage, `-m`은 메시지 지정입니다.
 - `git commit -am "Continue login work after hotfix"`: 원래 디렉터리에서 작업 중이던 tracked 변경을 hotfix 뒤에 이어서 commit 합니다.
 - `git worktree remove <path>`: 정리된 상태의 worktree를 제거합니다. 등록 정보와 디렉터리를 함께 지웁니다.
+- `git worktree add ../git-workshop-worktrees/hotfix-typo hotfix/typo`: `hotfix/typo` 브랜치가 남아 있다면 같은 worktree를 다시 엽니다. `remove`로 디렉터리를 지운 뒤 복구 예시로 쓸 수 있습니다.
 - `git worktree remove --force <path>`: 미커밋 변경이나 잠긴 상태가 있어도 강제로 제거합니다. 내용 손실 위험이 있으니 신중하게 씁니다.
 - `git worktree prune`: 이미 사라진 worktree의 메타데이터 흔적을 정리합니다.
 
