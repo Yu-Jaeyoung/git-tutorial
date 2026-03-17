@@ -215,32 +215,10 @@ git lg
 - reflog에는 보통 rebase 시작 전 `feature/payment` 위치가 남아 있습니다.
 - merge commit이 사라진 경우도 같은 원리로 복구할 수 있습니다. “merge commit을 cherry-pick해서 되살리는 것”이 아니라, rebase 전 브랜치 위치 자체로 돌아가는 접근입니다.
 
-## 명령과 옵션 풀이
+## 명령 참고
 
-- `./bin/reset-lab interactive-rebase`: interactive rebase 실습 상태를 다시 만듭니다.
-- `git lg`: rebase 전후 commit 구조를 비교합니다.
-- `git switch feature/payment`: 정리할 commit들이 있는 브랜치로 이동합니다.
-- `git rebase -i main`: `rebase`는 commit을 다시 적용하고, `-i`는 interactive의 약자로 todo 목록을 편집할 수 있게 합니다. `main`은 현재 commit들을 다시 얹을 기준 브랜치입니다.
-- `git rebase -i --rebase-merges main`: merge commit 구조까지 보존하면서 interactive rebase를 하고 싶을 때 씁니다. 기본 `rebase -i`와 달리 merge topology를 유지하려고 시도합니다.
-- `git rebase --abort`: 편집 도중 꼬였거나 결과가 마음에 들지 않으면 rebase 자체를 취소합니다.
-- `git reflog show feature/payment --oneline -n 10`: 완료된 interactive rebase를 되돌릴 때, rebase 전 `feature/payment` tip을 찾는 데 유용합니다.
-- `git branch backup/after-interactive-rebase`: 현재 rewrite 결과를 잃고 싶지 않을 때 임시 백업 브랜치를 만듭니다.
-- `git reset --hard <reflog에서 찾은 rebase 전 커밋 해시>`: reflog에서 찾은 rebase 시작 전 상태로 브랜치를 되돌립니다.
-- `git switch -c spike/payment-helper HEAD~3`: `-c`는 새 브랜치 생성, `HEAD~3`은 현재 위치에서 첫 번째 부모를 세 번 따라간 commit을 기준점으로 삼는다는 뜻입니다.
-- `git merge --no-ff spike/payment-helper -m "Merge payment helper branch"`: `--no-ff`는 fast-forward가 가능해도 merge commit을 강제로 남깁니다. merge commit이 있는 interactive rebase 예시를 만들기 위해 씁니다.
-- `git rev-parse --short HEAD^2`: `rev-parse`는 Git이 이해하는 revision을 실제 hash로 풀어 줍니다. `--short`는 짧은 hash 표기이고, `HEAD^2`는 현재 merge commit의 두 번째 부모를 뜻합니다.
-
-## rebase todo 명령 풀이
-
-- `pick`: 해당 commit을 그대로 유지합니다.
-- `reword`: 내용은 그대로 두고 commit 메시지만 수정합니다.
-- `edit`: 해당 commit에서 rebase를 멈추고, amend나 파일 수정 같은 추가 편집을 하게 해 줍니다.
-- `squash`: 현재 commit을 바로 위 commit과 합치고, 메시지도 함께 정리합니다.
-- `fixup`: 현재 commit을 바로 위 commit과 합치되, 현재 commit 메시지는 버립니다.
-- `drop`: 해당 commit을 현재 브랜치 히스토리에서 제외합니다.
-- `label`: 현재 위치에 이름표를 붙입니다. `--rebase-merges`에서 자주 보입니다.
-- `reset`: 이전에 붙여 둔 label 위치로 HEAD를 되돌립니다.
-- `merge`: 지정한 label을 현재 위치와 다시 합쳐 merge commit을 재구성합니다.
+- 공통 명령과 표기: [command-reference](../reference/README.md)
+- interactive rebase 전용 명령과 todo 키워드: [COMMANDS.md](./COMMANDS.md)
 
 ## merge commit FAQ
 
@@ -260,7 +238,7 @@ git lg
 ### merge commit이 사라졌다면 어떻게 되돌리나요?
 
 - 아직 rebase 중이라면 가장 먼저 `git rebase --abort`를 시도합니다.
-- 이미 rebase가 끝났다면 `git reflog`로 rebase 시작 전 `HEAD`를 찾고, `git reset --hard <이전 커밋>`으로 돌아가는 것이 가장 일반적입니다.
+- 이미 rebase가 끝났다면 `git reflog show feature/payment`로 rebase 전 브랜치 tip을 찾고, `git reset --hard <이전 커밋>`으로 돌아가는 것이 가장 일반적입니다.
 - 다음부터 merge commit을 보존하고 싶다면 `git rebase -i --rebase-merges main`을 사용합니다.
 
 ### merge commit이 삭제된 뒤 remote에 push가 되나요?

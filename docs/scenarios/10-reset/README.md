@@ -120,20 +120,10 @@ git lg
 - 대신 `reflog`가 rebase 전 `HEAD` 이동 기록을 남겨 두기 때문에, `reset --hard`로 원래 브랜치 상태를 복구할 수 있습니다.
 - 이 패턴은 merge commit이 interactive rebase 과정에서 사라진 경우에도 같은 원리로 적용됩니다.
 
-## 명령과 옵션 풀이
+## 명령 참고
 
-- `./bin/reset-lab reset`: reset 실습용 기준 상태를 만듭니다.
-- `git lg`: reset 전후로 어떤 commit이 보이는지 그래프로 확인합니다.
-- `git reset --soft HEAD~1`: `reset`은 branch 기준점을 옮기는 명령이고, `--soft`는 index와 working tree는 그대로 둔 채 commit 위치만 한 단계 뒤로 보냅니다. `HEAD~1`은 현재 commit의 바로 이전 부모 commit입니다.
-- `git status -sb`: soft, mixed, hard 결과를 가장 빨리 비교할 수 있는 상태 확인 명령입니다. `-s`는 short, `-b`는 branch입니다.
-- `git reset HEAD~1`: 옵션을 쓰지 않으면 기본값은 `--mixed`입니다. commit 위치를 한 단계 뒤로 보내고, staging은 해제하지만 working tree 변경은 남깁니다.
-- `git reset --hard HEAD~1`: `--hard`는 branch, index, working tree를 모두 대상 commit 상태로 맞춥니다. 가장 강한 되돌리기입니다.
-- `git reflog --oneline -n 5`: `reflog`는 로컬에서 `HEAD`가 어떻게 이동했는지 기록합니다. `--oneline`은 한 줄 요약, `-n 5`는 최근 5개만 보겠다는 뜻입니다.
-- `git reset --hard <reflog에서 찾은 "Add rollback drill note" 커밋 해시>`: reflog에서 찾은 실제 commit hash로 다시 hard reset해 잃어버린 commit 위치를 복구합니다. 꺾쇠 괄호 안은 예시이므로 직접 hash로 바꿔야 합니다.
-- `./bin/reset-lab interactive-rebase`: interactive rebase 시나리오로 전환해 reflog를 다른 종류의 히스토리 복구에도 연결합니다.
-- `git reflog show feature/payment --oneline -n 10`: rewrite된 브랜치의 이전 tip을 찾고 싶을 때는 HEAD reflog보다 브랜치 reflog가 더 읽기 쉬울 수 있습니다.
-- `git branch backup/after-interactive-rebase`: 현재 위치를 잃고 싶지 않을 때 임시 백업 브랜치를 만듭니다. `backup/after-interactive-rebase`는 예시 이름입니다.
-- `git reset --hard <reflog에서 찾은 rebase 전 커밋 해시>`: 완료된 interactive rebase나 rebase rewrite를 reflog 기준으로 되돌릴 때도 같은 형태를 씁니다.
+- 공통 명령과 표기: [command-reference](../reference/README.md)
+- reset 전용 명령: [COMMANDS.md](./COMMANDS.md)
 
 ## 관찰 포인트
 

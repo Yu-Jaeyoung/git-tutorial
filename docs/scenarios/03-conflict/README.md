@@ -38,16 +38,10 @@ git lg
 git merge --abort
 ```
 
-## 명령과 옵션 풀이
+## 명령 참고
 
-- `./bin/reset-lab conflict`: 충돌이 나도록 미리 준비된 상태로 되돌립니다.
-- `git lg`: 현재 브랜치 구조를 그래프로 확인합니다.
-- `git switch main`: merge를 실행할 기준 브랜치를 `main`으로 맞춥니다.
-- `git merge feature/login`: `feature/login`을 현재 브랜치에 병합합니다. 이 시나리오에서는 같은 줄을 양쪽에서 바꿨기 때문에 충돌이 납니다.
-- `git status -sb`: `status` 출력에서 충돌 파일과 현재 브랜치를 짧게 확인합니다. `-s`는 short, `-b`는 branch입니다.
-- `git add config.txt`: `add`는 충돌 해결 후 “이 파일은 이제 해결됐다”고 Git에 알리는 역할도 합니다. `config.txt`는 해결한 파일 경로입니다.
-- `git commit -m "Resolve login rollout conflict"`: `commit`은 해결 결과를 새 commit으로 남기고, `-m`은 commit 메시지를 명령행에서 바로 적는 옵션입니다.
-- `git merge --abort`: `--abort`는 진행 중인 merge를 중단하고 merge 시작 전 상태로 되돌립니다.
+- 공통 명령과 표기: [command-reference](../reference/README.md)
+- conflict 전용 명령: [COMMANDS.md](./COMMANDS.md)
 
 ## 관찰 포인트
 

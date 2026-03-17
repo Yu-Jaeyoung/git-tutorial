@@ -51,21 +51,10 @@ git status -sb
 git stash list
 ```
 
-## 명령과 옵션 풀이
+## 명령 참고
 
-- `./bin/reset-lab stash`: stash 실습용 시작 상태를 만듭니다.
-- `git status -sb`: `-s`는 짧은 형식, `-b`는 브랜치 정보를 함께 보여줍니다.
-- `printf '\nLOGIN_REVIEW=team-alpha\n' >> config.txt`: `printf`는 문자열을 정확히 출력합니다. `\n`은 줄바꿈, `>>`는 파일 끝에 덧붙여 쓰기입니다.
-- `touch notes.txt`: 파일이 없으면 새로 만들고, 있으면 수정 시각만 갱신합니다.
-- `git stash push -u -m "login WIP before main review"`: `stash push`는 현재 작업 상태를 임시 보관합니다. `-u`는 untracked 파일까지 포함, `-m`은 stash 설명 메시지입니다.
-- `git stash list`: 저장된 stash 목록을 확인합니다.
-- `git switch main`: 현재 브랜치를 `main`으로 바꿉니다.
-- `git switch feature/login`: 다시 원래 작업 브랜치로 돌아옵니다.
-- `git stash apply stash@{0}`: `apply`는 stash를 복원하되 목록에서는 지우지 않습니다. `stash@{0}`은 가장 최근 stash를 뜻합니다.
-- `git reset --hard`: `reset`은 기준 commit으로 되돌리는 명령이고, `--hard`는 branch, index, working tree까지 모두 해당 commit 상태로 맞춥니다.
-- `git clean -fd`: `clean`은 추적되지 않는 파일을 지웁니다. `-f`는 강제 실행, `-d`는 디렉터리까지 함께 삭제입니다.
-- `git stash push -m "tiny follow-up"`: 여기서는 untracked 파일이 없으므로 `-u` 없이 tracked 변경만 stash 합니다.
-- `git stash pop`: stash를 복원하고, 성공하면 stash 목록에서 제거합니다.
+- 공통 명령과 표기: [command-reference](../reference/README.md)
+- stash 전용 명령: [COMMANDS.md](./COMMANDS.md)
 
 ## 관찰 포인트
 

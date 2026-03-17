@@ -32,15 +32,10 @@ git status -sb
 git cherry-pick --abort
 ```
 
-## 명령과 옵션 풀이
+## 명령 참고
 
-- `./bin/reset-lab cherry-pick`: cherry-pick 실습 시작 상태를 만듭니다.
-- `git lg`: 현재 브랜치 관계를 그래프로 확인합니다.
-- `git log --oneline hotfix/typo`: `log`는 commit 기록을 보고, `--oneline`은 각 commit을 한 줄로 압축해서 보여줍니다. `hotfix/typo`는 조회할 브랜치 이름입니다.
-- `git switch main`: commit을 가져올 대상 브랜치를 `main`으로 맞춥니다.
-- `git cherry-pick <Fix customer-facing typo in README 커밋 해시>`: `cherry-pick`은 특정 commit의 변경만 현재 브랜치에 적용합니다. 꺾쇠 괄호 안의 값은 실제 commit hash로 바꿔 입력해야 합니다.
-- `git status -sb`: 적용 후 충돌이 없는지와 작업 상태를 짧게 확인합니다.
-- `git cherry-pick --abort`: cherry-pick 도중 conflict가 나서 중단하고 싶을 때 시작 전 상태로 되돌립니다.
+- 공통 명령과 표기: [command-reference](../reference/README.md)
+- cherry-pick 전용 명령: [COMMANDS.md](./COMMANDS.md)
 
 ## 관찰 포인트
 

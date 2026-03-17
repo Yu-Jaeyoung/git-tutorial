@@ -25,13 +25,10 @@ git lg
 git status -sb
 ```
 
-## 명령과 옵션 풀이
+## 명령 참고
 
-- `./bin/reset-lab revert`: revert 실습용 기준 상태로 되돌립니다.
-- `git lg`: revert 전후 그래프를 비교합니다.
-- `git switch main`: 취소할 commit이 있는 브랜치로 이동합니다.
-- `git revert --no-edit HEAD`: `revert`는 지정한 commit의 반대 내용을 새 commit으로 만듭니다. `--no-edit`는 Git이 제안하는 기본 revert 메시지를 그대로 사용하겠다는 뜻이고, `HEAD`는 현재 commit을 뜻합니다.
-- `git status -sb`: revert 후 working tree가 깨끗한지와 현재 브랜치를 확인합니다.
+- 공통 명령과 표기: [command-reference](../reference/README.md)
+- revert 전용 명령: [COMMANDS.md](./COMMANDS.md)
 
 ## 관찰 포인트
 

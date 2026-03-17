@@ -4,6 +4,7 @@
 
 - 특정 개념을 깊게 설명하거나 복습 자료로 쓰려면 아래 시나리오 README를 엽니다.
 - 모든 문서는 `./bin/reset-lab <scenario>`로 시작 상태를 맞춘다는 전제를 공유합니다.
+- 공통 명령과 revision 표기는 [command-reference](reference/README.md)에 모아 두었습니다.
 
 ## 추천 읽기 순서
 
@@ -37,9 +38,5 @@
 
 ## 명령 읽기 규칙
 
-- `./bin/reset-lab <scenario>`에서 `./`는 현재 디렉터리, `bin/reset-lab`은 실습 저장소 안의 보조 스크립트, `<scenario>`는 실제 시나리오 이름이 들어갈 자리입니다.
-- `git lg`는 실습 저장소에 미리 등록된 alias입니다. 학생 입장에서는 `git log`를 그래프형으로 보기 쉽게 줄여 둔 명령이라고 이해하면 충분합니다.
-- `git status -sb`에서 `-s`는 short, `-b`는 branch의 약자입니다. 파일 상태를 짧게 보고 현재 브랜치도 함께 확인할 때 씁니다.
-- `HEAD`는 현재 내가 서 있는 commit을 뜻하고, `HEAD~1`은 현재 commit의 바로 이전 부모 commit을 뜻합니다.
-- `<커밋 해시>`처럼 꺾쇠 괄호로 적힌 값은 설명용 자리표시자입니다. 실제 명령을 실행할 때는 직접 찾은 값으로 바꿔 넣어야 합니다.
-- `stash@{0}`는 가장 최근 stash를 가리키는 표기입니다. 숫자가 커질수록 더 오래된 stash입니다.
+- 공통 명령과 표기는 [command-reference](reference/README.md)를 먼저 읽습니다.
+- 각 시나리오에서만 쓰는 세부 명령과 옵션은 각 폴더의 `COMMANDS.md`를 참고합니다.

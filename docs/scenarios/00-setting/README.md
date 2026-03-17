@@ -44,14 +44,10 @@ git status -sb
 git lg
 ```
 
-## 명령과 옵션 풀이
+## 명령 참고
 
-- `./scripts/setup-workshop-lab.sh`: 강사용 실습 저장소를 생성합니다.
-- `./setup-student-lab.sh`: 학생용 실습 저장소를 생성합니다.
-- `cd generated/git-workshop-lab`: 생성된 실습 저장소로 이동합니다.
-- `git status -sb`: 현재 브랜치와 working tree 상태를 짧게 확인합니다. `-s`는 short, `-b`는 branch입니다.
-- `git lg`: 실습 저장소에 미리 등록된 alias입니다. 현재 수업용 브랜치 그래프를 간단히 보여줍니다.
-- `./bin/reset-lab merge-ff`: `merge-ff` 시나리오 시작 상태로 복원합니다. 다른 시나리오도 같은 형식으로 실행합니다.
+- 공통 명령과 표기: [command-reference](../reference/README.md)
+- 설정 전용 명령: [COMMANDS.md](./COMMANDS.md)
 
 ## 관찰 포인트
 

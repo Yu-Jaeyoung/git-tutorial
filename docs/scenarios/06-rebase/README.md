@@ -53,15 +53,10 @@ git lg
 git status -sb
 ```
 
-## 명령과 옵션 풀이
+## 명령 참고
 
-- `./bin/reset-lab rebase`: 기본 rebase 실습 시작 상태로 복원합니다.
-- `./bin/reset-lab rebase-conflict`: rebase 도중 conflict가 나도록 준비된 상태로 복원합니다.
-- `git lg`: rebase 전후 그래프를 비교하기 위한 alias입니다.
-- `git switch feature/payment`: 현재 작업 브랜치를 `feature/payment`로 맞춥니다.
-- `git rebase main`: `rebase`는 현재 브랜치 commit들을 다른 기준 위에 다시 적용합니다. `main`은 새 기준점 역할을 하는 브랜치입니다.
-- `git status -sb`: rebase 후 또는 rebase 중단 시 현재 브랜치와 작업 상태를 빠르게 확인합니다. `-s`는 short, `-b`는 branch입니다.
-- `git rebase --abort`: rebase 도중 conflict가 났거나 중간에 멈췄을 때 작업을 취소하고 rebase 시작 전 상태로 돌아갑니다.
+- 공통 명령과 표기: [command-reference](../reference/README.md)
+- rebase 전용 명령: [COMMANDS.md](./COMMANDS.md)
 
 ## 관찰 포인트
 

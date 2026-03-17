@@ -25,13 +25,10 @@ git lg
 git status -sb
 ```
 
-## 명령과 옵션 풀이
+## 명령 참고
 
-- `./bin/reset-lab merge-ff`: 현재 디렉터리의 `bin/reset-lab` 스크립트를 실행해 `merge-ff` 시작 상태로 되돌립니다.
-- `git lg`: 실습 저장소에 미리 설정된 alias입니다. 현재 브랜치 그래프를 짧고 읽기 쉽게 보여줍니다.
-- `git switch main`: `switch`는 checkout 대상을 브랜치 중심으로 바꾸는 명령이고, `main`은 이동할 브랜치 이름입니다.
-- `git merge feature/login`: `merge`는 다른 브랜치의 변경을 현재 브랜치로 합칩니다. `feature/login`은 가져올 쪽 브랜치 이름입니다.
-- `git status -sb`: `status`는 현재 작업 상태 확인, `-s`는 short 형식, `-b`는 branch 정보를 함께 표시하는 옵션입니다.
+- 공통 명령과 표기: [command-reference](../reference/README.md)
+- merge-ff 전용 명령: [COMMANDS.md](./COMMANDS.md)
 
 ## 관찰 포인트
 

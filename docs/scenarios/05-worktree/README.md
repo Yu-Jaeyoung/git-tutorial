@@ -44,19 +44,10 @@ git commit -am "Refine login copy in main worktree"
 git lg
 ```
 
-## 명령과 옵션 풀이
+## 명령 참고
 
-- `./bin/reset-lab worktree`: worktree 실습 시작 상태로 복원합니다.
-- `git lg`: 현재 브랜치 그래프를 요약해서 보여줍니다.
-- `mkdir -p ../git-workshop-worktrees`: `mkdir`는 디렉터리를 만들고, `-p`는 부모 디렉터리가 없어도 함께 만들며 이미 있어도 오류를 내지 않습니다. `..`는 부모 디렉터리를 뜻합니다.
-- `git worktree add ../git-workshop-worktrees/hotfix-typo -b hotfix/typo main`: `worktree add`는 새 작업 디렉터리를 만듭니다. 첫 인자는 새 디렉터리 경로, `-b hotfix/typo`는 새 브랜치 생성, `main`은 그 브랜치가 출발할 기준 commit입니다.
-- `git worktree list`: 현재 연결된 worktree 목록을 보여줍니다.
-- `cd ../git-workshop-worktrees/hotfix-typo`: 새 worktree 디렉터리로 이동합니다.
-- `printf '\n- typo fix shipped from hotfix branch\n' >> README.md`: `printf`는 문자열 출력, `\n`은 줄바꿈, `>>`는 파일 끝에 이어 쓰기입니다.
-- `git commit -am "Fix typo notice from hotfix worktree"`: `-a`는 이미 추적 중인 수정 파일을 자동으로 stage하고, `-m`은 commit 메시지를 바로 적습니다. untracked 파일은 `-a`만으로 포함되지 않습니다.
-- `cd -`: 바로 직전에 있던 디렉터리로 돌아갑니다.
-- `git switch feature/login`: 원래 메인 작업 디렉터리에서 feature 브랜치를 계속 봅니다.
-- `git commit -am "Refine login copy in main worktree"`: 위와 같은 이유로 tracked 파일 수정은 `-am` 조합으로 바로 commit할 수 있습니다.
+- 공통 명령과 표기: [command-reference](../reference/README.md)
+- worktree 전용 명령: [COMMANDS.md](./COMMANDS.md)
 
 ## 관찰 포인트
 
