@@ -1,0 +1,82 @@
+# setting
+
+한 줄 요약: 실습은 먼저 전용 Git 샌드박스를 만든 뒤, 그 저장소 안에서 `git lg`와 `./bin/reset-lab`을 기준으로 반복 진행합니다.
+
+## 언제 읽는가
+
+- `01-merge-ff`로 들어가기 전에 처음 한 번 읽습니다.
+- 강사용 저장소와 학생용 배포본 중 어떤 시작 경로를 써야 하는지 헷갈릴 때 읽습니다.
+- `git lg`, `git status -sb`, `./bin/reset-lab`이 왜 동작하는지 먼저 잡고 싶을 때 읽습니다.
+
+## 어떤 경로를 쓰는가
+
+강사 또는 자료 작성자라면 이 저장소 루트에서 시작합니다.
+
+```bash
+./scripts/setup-workshop-lab.sh
+cd generated/git-workshop-lab
+```
+
+학생용 배포본을 받았다면 `student-kit/` 안에서 시작합니다.
+
+```bash
+cd student-kit
+./setup-student-lab.sh
+cd generated/git-workshop-lab
+```
+
+둘 다 최종적으로는 `generated/git-workshop-lab` 같은 실습용 저장소 안으로 들어간다는 점이 핵심입니다.
+
+## 시작 상태 만들기
+
+실습 저장소 안으로 들어간 뒤 아래 세 명령을 먼저 확인합니다.
+
+```bash
+git status -sb
+git lg
+./bin/reset-lab merge-ff
+```
+
+그다음 다시 상태를 봅니다.
+
+```bash
+git status -sb
+git lg
+```
+
+## 명령과 옵션 풀이
+
+- `./scripts/setup-workshop-lab.sh`: 강사용 실습 저장소를 생성합니다.
+- `./setup-student-lab.sh`: 학생용 실습 저장소를 생성합니다.
+- `cd generated/git-workshop-lab`: 생성된 실습 저장소로 이동합니다.
+- `git status -sb`: 현재 브랜치와 working tree 상태를 짧게 확인합니다. `-s`는 short, `-b`는 branch입니다.
+- `git lg`: 실습 저장소에 미리 등록된 alias입니다. 현재 수업용 브랜치 그래프를 간단히 보여줍니다.
+- `./bin/reset-lab merge-ff`: `merge-ff` 시나리오 시작 상태로 복원합니다. 다른 시나리오도 같은 형식으로 실행합니다.
+
+## 관찰 포인트
+
+- 실습은 이 문서 저장소가 아니라 생성된 실습 저장소 안에서 진행합니다.
+- `git lg`와 `./bin/reset-lab`은 실습 저장소를 만들 때 자동으로 설정됩니다.
+- 시나리오를 다시 시작하고 싶을 때는 `reset`, `checkout`, 새 clone보다 `./bin/reset-lab <scenario>`가 기본 복구 수단입니다.
+
+## 핵심 개념
+
+- 이 워크숍은 “실제 작업 저장소”와 “실습용 샌드박스 저장소”를 분리해 두는 방식입니다.
+- 그래서 `reset --hard`, `clean`, `rebase`, `interactive rebase` 같은 위험한 명령도 반복 연습하기 쉽습니다.
+- 모든 시나리오는 같은 실습 저장소 안에서 시작 상태만 바꿔 가며 진행합니다.
+
+## 자주 헷갈리는 포인트
+
+- 루트 저장소에서 바로 `git lg`를 치면 실습 alias가 없을 수 있습니다. 반드시 생성된 실습 저장소 안으로 들어가야 합니다.
+- `student-kit/`는 배포 패키지이고, 실제 실습은 그 안에서 생성한 별도 Git 저장소에서 합니다.
+- `./bin/reset-lab`은 실습 저장소 안에만 있습니다.
+
+## 비교 대상
+
+- [01-merge-ff](../01-merge-ff/README.md): 환경 준비가 끝나면 가장 먼저 들어갈 실습입니다.
+
+## 질문 거리
+
+1. 왜 이 워크숍은 실습용 저장소를 따로 만들어서 진행할까요?
+2. `./bin/reset-lab`을 쓰는 방식이 새로 clone하는 방식보다 왜 편할까요?
+3. 강사용 setup과 학생용 setup은 어디까지 같고, 어디서 갈라질까요?

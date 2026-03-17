@@ -7,6 +7,10 @@
 
 ## 추천 읽기 순서
 
+### Start Here
+
+1. [00-setting](00-setting/README.md): 어떤 저장소에서 시작하고, `git lg`와 `./bin/reset-lab`을 어떻게 쓰는지
+
 ### Session 1
 
 1. [01-merge-ff](01-merge-ff/README.md): fast-forward merge가 언제 가능한지
@@ -25,7 +29,8 @@
 
 ## 읽는 법
 
-- 먼저 `언제 쓰는가`에서 상황을 잡습니다.
+- 먼저 [00-setting](00-setting/README.md)에서 실습 환경을 준비합니다.
+- 그다음 `언제 쓰는가`에서 상황을 잡습니다.
 - 그다음 `시작 상태 만들기`와 `실습 절차`를 그대로 따라갑니다.
 - 중간중간 `관찰 포인트`에서 `git status -sb`, `git lg` 출력이 왜 그렇게 보이는지 설명합니다.
 - 마지막 `질문 거리`는 학습자가 읽고 난 뒤 토론하거나 질문을 이어가기 위한 용도입니다.
