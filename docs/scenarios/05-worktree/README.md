@@ -18,9 +18,10 @@ git lg
 
 ## 실습 절차
 
-먼저 hotfix용 보조 worktree를 만듭니다.
+먼저 현재 연결된 worktree 상태를 보고, hotfix용 보조 worktree를 만듭니다.
 
 ```bash
+git worktree list
 mkdir -p ../git-workshop-worktrees
 git worktree add ../git-workshop-worktrees/hotfix-typo -b hotfix/typo main
 git worktree list
@@ -44,6 +45,14 @@ git commit -am "Refine login copy in main worktree"
 git lg
 ```
 
+실습이 끝나면 보조 worktree를 정리하고 목록이 어떻게 바뀌는지 확인합니다.
+
+```bash
+git worktree list
+git worktree remove ../git-workshop-worktrees/hotfix-typo
+git worktree list
+```
+
 ## 명령 참고
 
 - 공통 명령과 표기: [command-reference](../reference/README.md)
@@ -54,6 +63,7 @@ git lg
 - `git worktree list`를 보면 하나의 저장소가 여러 작업 디렉터리로 열려 있습니다.
 - hotfix용 디렉터리와 원래 디렉터리가 서로 다른 branch를 동시에 checkout할 수 있습니다.
 - 브랜치 전환 때문에 현재 작업을 숨길 필요가 없습니다.
+- `git worktree remove` 전후로 목록을 비교하면 worktree 등록 정보와 디렉터리가 함께 정리되는 점이 보입니다.
 
 ## 핵심 개념
 
@@ -65,6 +75,7 @@ git lg
 - worktree는 repo를 통째로 복사하는 것이 아닙니다.
 - 같은 branch를 두 worktree에서 동시에 checkout하는 데는 제약이 있습니다.
 - 실습 후 정리가 필요하면 `git worktree remove`를 사용합니다.
+- 미커밋 변경이 남아 있으면 삭제가 거절될 수 있고, 그때는 먼저 commit 하거나 `--force`를 신중히 사용해야 합니다.
 
 ## 비교 대상
 
@@ -74,4 +85,5 @@ git lg
 
 1. 왜 hotfix 상황에서는 stash보다 worktree가 더 깔끔할 수 있을까요?
 2. worktree를 쓰면 브랜치 전환 비용이 어떻게 달라질까요?
-3. worktree는 로컬 협업 흐름을 어떻게 바꿔 줄까요?
+3. `git worktree list`를 보면 어떤 정보가 핵심으로 보이나요?
+4. worktree를 지울 때는 왜 `remove`까지 같이 익혀야 할까요?

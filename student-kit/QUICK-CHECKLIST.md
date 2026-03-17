@@ -118,6 +118,7 @@ git stash list
 ```bash
 ./bin/reset-lab worktree
 git lg
+git worktree list
 mkdir -p ../git-workshop-worktrees
 git worktree add ../git-workshop-worktrees/hotfix-typo -b hotfix/typo main
 git worktree list
@@ -141,9 +142,19 @@ git commit -am "Refine login copy in main worktree"
 git lg
 ```
 
+마지막에는 보조 worktree를 정리합니다.
+
+```bash
+git worktree list
+git worktree remove ../git-workshop-worktrees/hotfix-typo
+git worktree list
+```
+
 체크:
 - 같은 저장소를 두 디렉터리에서 보고 있는가
 - hotfix용 디렉터리와 원래 디렉터리가 다른 브랜치를 동시에 checkout하고 있는가
+- `git worktree list` 전후를 비교했을 때 목록이 어떻게 달라지는가
+- `git worktree remove` 뒤에 보조 디렉터리와 등록 정보가 함께 정리되었는가
 - `stash` 대신 `worktree`를 쓰는 게 더 좋은 상황을 말할 수 있는가
 
 ## 06 rebase
