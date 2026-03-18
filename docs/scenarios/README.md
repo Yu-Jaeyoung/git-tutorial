@@ -39,7 +39,7 @@
 ### Extension
 
 1. [11-tag](11-tag/README.md): branch와 tag의 차이, lightweight와 annotated tag, detached HEAD를 익히는 법
-2. [12-github-collab](12-github-collab/README.md): 실제 GitHub remote에서 PR, 선행 merge, conflict, local 해결을 한 번에 경험하는 협업 캡스톤
+2. [12-github-collab](12-github-collab/README.md): 실제 GitHub remote에서 PR, merge, rebase, revert, history rewrite 이후 push 거절까지 경험하는 협업 캡스톤
 
 ## 읽는 법
 
