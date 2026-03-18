@@ -4,7 +4,7 @@
 
 - 특정 개념을 깊게 설명하거나 복습 자료로 쓰려면 아래 시나리오 폴더를 엽니다.
 - 각 시나리오 폴더에는 개념과 실습 흐름을 담은 `README.md`, 시나리오 전용 명령과 옵션을 담은 `COMMANDS.md`가 함께 있습니다.
-- 모든 문서는 `./bin/reset-lab <scenario>`로 시작 상태를 맞춘다는 전제를 공유합니다.
+- 대부분의 문서는 `./bin/reset-lab <scenario>`로 시작 상태를 맞춥니다. 예외는 실제 GitHub remote를 쓰는 `12-github-collab`입니다.
 - 공통 명령과 revision 표기는 [command-reference](reference/README.md)에 모아 두었습니다.
 
 ## 문서 구조
@@ -39,10 +39,12 @@
 ### Extension
 
 1. [11-tag](11-tag/README.md): branch와 tag의 차이, lightweight와 annotated tag, detached HEAD를 익히는 법
+2. [12-github-collab](12-github-collab/README.md): 실제 GitHub remote에서 PR, 선행 merge, conflict, local 해결을 한 번에 경험하는 협업 캡스톤
 
 ## 읽는 법
 
 - 먼저 [00-setting](00-setting/README.md)에서 실습 환경을 준비합니다.
+- 다만 [12-github-collab](12-github-collab/README.md)만은 `reset-lab` 대신 실제 GitHub 저장소에서 시작합니다.
 - 공통 명령이 헷갈리면 [command-reference](reference/README.md)를 먼저 읽습니다.
 - 그다음 `언제 쓰는가`에서 상황을 잡습니다.
 - 그다음 `시작 상태 만들기`와 `실습 절차`를 그대로 따라갑니다.

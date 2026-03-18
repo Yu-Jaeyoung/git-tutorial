@@ -1,6 +1,6 @@
 # Git Workshop Kit
 
-`merge`, `rebase`, `interactive rebase`, `cherry-pick`, `stash`, `worktree`, `revert`, `reset`, `reflog`, `tag`를 실습 중심으로 가르칠 수 있도록 만든 Git 워크숍 자료 저장소입니다.
+`merge`, `rebase`, `interactive rebase`, `cherry-pick`, `stash`, `worktree`, `revert`, `reset`, `reflog`, `tag`, 그리고 마지막 GitHub 협업 capstone까지 실습 중심으로 가르칠 수 있도록 만든 Git 워크숍 자료 저장소입니다.
 
 ## 포함 내용
 
@@ -45,6 +45,8 @@ reset
 tag
 ```
 
+별도로 실제 GitHub remote를 쓰는 협업 capstone 시나리오 `12-github-collab`도 문서에 포함되어 있습니다. 이 시나리오는 `reset-lab` 예외입니다.
+
 ## 권장 운영 방식
 
 - 모든 실습은 `상황 설명 -> 결과 예측 -> 명령 실행 -> git lg 확인 -> 복구` 순서로 진행합니다.
@@ -70,4 +72,5 @@ tag
 - 처음 시작할 때는 `docs/scenarios/00-setting/README.md`를 먼저 읽습니다.
 - 개별 개념을 깊게 설명하거나 학습자가 읽고 질문하게 하려면 `docs/scenarios/README.md` 아래 시나리오 문서를 사용합니다.
 - 시나리오 인덱스에서 추천 순서대로 진행하면 전체 워크숍 흐름을 그대로 따라갈 수 있습니다.
+- 마지막 `12-github-collab`은 로컬 샌드박스가 아니라 실제 GitHub 저장소에서 진행하는 capstone입니다.
 - 시나리오 폴더는 `01-merge-ff`처럼 실제 학습 순서가 드러나도록 번호를 붙여 정렬했습니다.
