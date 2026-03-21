@@ -7,6 +7,7 @@
 - 시나리오별 상세 README: `docs/scenarios/README.md`
 - 실습용 Git 저장소 생성 스크립트: `scripts/setup-workshop-lab.sh`
 - 학생 배포본 폴더: `student-kit/`
+- GitHub 기반 1시간 복습 패키지: `review-kit/`
 
 ## 빠른 시작
 
@@ -59,6 +60,7 @@ tag
 - 학생에게는 `student-kit/` 폴더만 별도로 전달하면 됩니다.
 - 학생용 배포본에는 상세 시나리오 문서 대신 `setup-student-lab.sh`와 짧은 안내문만 들어 있습니다.
 - 학생은 `student-kit/README.md`를 보고 `./setup-student-lab.sh`로 실습 저장소를 만든 뒤, `QUICK-CHECKLIST.md` 순서대로 진행하면 됩니다.
+- GitHub issue, branch, PR 흐름으로 `01~05`를 1시간 복습하려면 `review-kit/`를 사용합니다.
 - zip 배포본이 필요하면 `./scripts/package-student-kit.sh`를 실행합니다.
 
 ```bash
@@ -74,3 +76,4 @@ tag
 - 시나리오 인덱스에서 추천 순서대로 진행하면 전체 워크숍 흐름을 그대로 따라갈 수 있습니다.
 - 마지막 `12-github-collab`은 로컬 샌드박스가 아니라 실제 GitHub 저장소에서 진행하는 capstone입니다.
 - 시나리오 폴더는 `01-merge-ff`처럼 실제 학습 순서가 드러나도록 번호를 붙여 정렬했습니다.
+- GitHub 기반 복습 프로젝트 자료는 `review-kit/README.md`에서 시작합니다.

@@ -39,6 +39,7 @@ git lg
 
 `rebase-conflict`는 별도 시나리오라기보다 `rebase` 단계 안에서 함께 실습하는 abort drill입니다.
 마지막 GitHub 협업 capstone은 이 `student-kit` 범위 밖이며, 강사 안내에 따라 별도 GitHub 저장소에서 진행합니다.
+`01~05`를 GitHub issue, branch, PR 흐름으로 1시간 복습하고 싶다면 루트의 `review-kit/`를 사용합니다.
 
 ## 진행 방식
 
