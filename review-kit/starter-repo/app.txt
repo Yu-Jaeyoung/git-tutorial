@@ -1,0 +1,3 @@
+APP_NAME=release-review-sandbox
+LOGIN_STATUS=planned
+NOTICE_CHANNEL=email
