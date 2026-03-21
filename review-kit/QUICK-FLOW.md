@@ -19,6 +19,7 @@
 - 수정 파일:
   - `README.md`
   - `docs/release-checklist.md`
+- 정확한 추가 문장과 최종 값은 `github/issue-1.md`를 기준으로 합니다.
 - 해야 할 일:
   - 릴리즈 소개 한 줄 추가
   - release owner 지정
@@ -41,6 +42,7 @@
   - `docs/release-checklist.md`
   - `config.txt`
   - `notes.txt`
+- 정확한 추가 문자열과 최종 값은 `github/issue-2.md`를 기준으로 합니다.
 - 해야 할 일:
   - customer notice 초안 작성
   - review 설정 추가
@@ -65,6 +67,7 @@
   - `app.txt`
   - `README.md`
   - `docs/release-checklist.md`
+- 정확한 수정 값과 미완성 변경 내용은 `github/issue-3.md`를 기준으로 합니다.
 - 해야 할 일:
   - feature branch에 미완성 변경 하나 만들기
   - `worktree add`, `worktree list`, `worktree remove` 사용하기

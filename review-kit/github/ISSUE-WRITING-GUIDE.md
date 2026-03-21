@@ -1,6 +1,6 @@
 # Issue Writing Guide
 
-학생용 GitHub issue는 “학습 질문지”가 아니라 바로 실행 가능한 작업 지시서여야 합니다.
+학생용 GitHub issue는 바로 실행할 수 있는 작업 지시서 형태로 작성하는 것이 좋습니다.
 
 ## What an issue should contain
 

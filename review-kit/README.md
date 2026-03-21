@@ -123,7 +123,7 @@ git push -u origin main
 - GitHub issue 예시와 작성 원칙, PR 작성 가이드는 `github/` 폴더를 봅니다.
 - 이 패키지는 `01~05` 복습 전용입니다. `rebase`, `revert`, `reset`, 협업 capstone은 포함하지 않습니다.
 
-## Issue 문안 읽는 법
+## Issue/PR 문안 읽는 법
 
 - `issue-*.md`는 실제 GitHub issue 본문 예시입니다.
 - issue에는 어떤 정보가 들어가야 하는지에 대한 공통 원칙은 [github/ISSUE-WRITING-GUIDE.md](./github/ISSUE-WRITING-GUIDE.md)에 정리했습니다.
