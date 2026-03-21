@@ -12,7 +12,8 @@
 
 ## 들어 있는 파일
 
-- `QUICK-FLOW.md`: 1시간 압축 실행 카드
+- `QUICK-FLOW.md`: 먼저 스스로 풀어 보는 문제지형 진행 카드
+- `HINTS-AND-SOLUTION.md`: 막혔을 때만 보는 예시 풀이
 - `starter-repo/`: 새 GitHub repo를 시작할 때 복사할 초기 파일 세트
 - `github/issue-*.md`: GitHub issue 본문 초안
 - `github/pr-*.md`: GitHub PR 본문 초안
@@ -33,7 +34,8 @@
 4. 초기 commit을 하나 만든 뒤 `main`에 push 합니다.
 5. `github/issue-1.md`, `github/issue-2.md`, `github/issue-3.md`를 참고해 issue 3개를 생성합니다.
 6. PR을 열 때는 `github/pr-*.md` 문안을 그대로 복사해 사용합니다.
-7. 이후에는 `QUICK-FLOW.md` 순서대로 진행합니다.
+7. 먼저 `QUICK-FLOW.md`만 보고 진행합니다.
+8. 정말 막히는 경우에만 `HINTS-AND-SOLUTION.md`를 참고합니다.
 
 초기 baseline commit은 아래처럼 만들면 됩니다.
 
@@ -114,6 +116,7 @@ git push -u origin main
 
 ## 참고
 
-- 빠른 명령 흐름은 [QUICK-FLOW.md](./QUICK-FLOW.md)를 봅니다.
+- 먼저 [QUICK-FLOW.md](./QUICK-FLOW.md)로 문제를 풉니다.
+- 막히면 [HINTS-AND-SOLUTION.md](./HINTS-AND-SOLUTION.md)를 참고합니다.
 - GitHub에 붙여넣을 issue/PR 문안은 `github/` 폴더를 봅니다.
 - 이 패키지는 `01~05` 복습 전용입니다. `rebase`, `revert`, `reset`, 협업 capstone은 포함하지 않습니다.
