@@ -1,31 +1,34 @@
 # PR Writing Guide
 
-학생용 PR 본문은 “무엇을 바꿨는지”, “왜 그렇게 Git을 썼는지”, “무엇을 확인해야 하는지”를 짧게 드러내면 충분합니다.
+PR 본문은 리뷰어가 변경 내용을 빠르게 이해하고 확인할 수 있게 돕는 짧은 안내문입니다.
 
 ## When to use
 
-- `Issue 1` 기능 PR
-- `Issue 2` draft PR
-- `Issue 3` hotfix PR
-- `Issue 3` feature update PR
+- feature PR
+- hotfix PR
+- draft PR
+- 작은 문서 변경 PR
+
+이번 복습용 PR 예시는 [REVIEW-PR-EXAMPLES.md](./REVIEW-PR-EXAMPLES.md)에 따로 정리했습니다.
 
 ## Recommended sections
 
-아래 세 섹션을 기본 틀로 사용합니다.
+아래 세 섹션을 기본 틀로 사용하면 대부분의 PR을 무리 없이 설명할 수 있습니다.
 
 ### What changed
 
-- 어떤 파일을 어떻게 바꿨는지
-- 최종 값이나 중요한 문자열이 무엇인지
+- 어떤 파일이나 동작이 바뀌었는지
+- 리뷰어가 알아야 할 최종 값이나 중요한 문자열이 무엇인지
 
 ### Git choice
 
-- 왜 이 상황에서 이런 Git 선택을 했는지
+- 왜 이 branch 전략이나 Git 선택이 자연스러웠는지
+- 특별한 Git 판단이 없으면 한 줄만 써도 충분합니다
 - 예:
-  - fast-forward 가능 상태 확인
-  - `stash push -u`, `stash pop`
-  - `worktree`
-  - `git merge origin/main`
+  - feature branch로 분리
+  - draft PR 유지
+  - hotfix 먼저 반영
+  - `merge` 또는 `rebase` 선택 이유
 
 ### What to check
 
@@ -33,88 +36,29 @@
 - 예:
   - 최종 문자열이 맞는가
   - 불필요한 파일이 포함되지 않았는가
-  - hotfix가 먼저 반영되었는가
+  - 의도한 branch 흐름이 유지되었는가
 
-## Example prompts by issue
+## Writing tips
 
-### Issue 1 example
+- 한 섹션당 1~3개 bullet이면 충분합니다.
+- 상세 명령어 로그를 PR 본문에 그대로 붙이지 않습니다.
+- issue 본문을 반복하기보다, 실제 변경 결과를 요약합니다.
+- exact value가 중요할 때만 문자열을 직접 적습니다.
 
-```md
-## What changed
-
-- add a release intro line to `README.md`
-- set the release owner in `docs/release-checklist.md`
-
-## Git choice
-
-- this branch was intentionally kept ahead of `main` only
-- I verified the fast-forward condition locally with `git merge --ff-only`
-
-## What to check
-
-- the new release intro line exists
-- the release owner is updated
-- no unrelated files were changed
-```
-
-### Issue 2 example
+## Generic example
 
 ```md
 ## What changed
 
-- draft the login notice text in `docs/release-checklist.md`
-- add `NOTICE_REVIEW=team-alpha` to `config.txt`
+- update the release note text in `docs/release-checklist.md`
+- add a review flag to `config.txt`
 
 ## Git choice
 
-- I used `git stash push -u` and `git stash pop` because the work was still draft-level and not ready to split into intermediate commits
-- this PR should stay open until Issue 3 is completed
+- keep the work on a feature branch and open a PR before merging to `main`
 
 ## What to check
 
-- `customer notice` is `draft login notice`
-- `NOTICE_REVIEW=team-alpha` exists
-- `notes.txt` is not part of the final commit
-```
-
-### Issue 3 hotfix example
-
-```md
-## What changed
-
-- fix the customer notice typo on `main`
-- add a short hotfix note to `README.md`
-
-## Git choice
-
-- I used `worktree` so the in-progress feature work could stay dirty in the original directory
-- this hotfix PR should be merged before the open feature PR
-
-## What to check
-
-- the hotfix branch was created from `main`
-- the hotfix landed on `main` first
-- the feature branch was not discarded during the hotfix work
-```
-
-### Issue 3 feature example
-
-```md
-## What changed
-
-- keep the login notice work on `feature/login-notice`
-- merge the latest `origin/main` after the hotfix PR
-- resolve the conflict in `docs/release-checklist.md`
-- keep the final line as `draft login notice after typo fix`
-
-## Git choice
-
-- `worktree` was used for the urgent hotfix path
-- `git merge origin/main` was used so the feature branch could absorb the hotfix and show the merge commit clearly
-
-## What to check
-
-- the final `customer notice` line matches the agreed value
-- the history now includes a merge commit
-- the PR is now ready to merge
+- the final text matches the requested value
+- no unrelated files were included
 ```

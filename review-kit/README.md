@@ -17,7 +17,8 @@
 - `starter-repo/`: 새 GitHub repo를 시작할 때 복사할 초기 파일 세트
 - `github/issue-*.md`: GitHub issue 본문 예시
 - `github/ISSUE-WRITING-GUIDE.md`: issue에는 어떤 정보가 들어가야 하는지 설명하는 공통 가이드
-- `github/PR-WRITING-GUIDE.md`: PR 본문에 어떤 내용을 써야 하는지 설명하는 공통 가이드
+- `github/PR-WRITING-GUIDE.md`: 일반적인 PR 본문 작성 원칙을 설명하는 공통 가이드
+- `github/REVIEW-PR-EXAMPLES.md`: 이번 복습 실습에서 참고할 PR 본문 예시 모음
 
 ## 준비물
 
@@ -35,7 +36,7 @@
 4. 초기 commit을 하나 만든 뒤 `main`에 push 합니다.
 5. `github/issue-1.md`, `github/issue-2.md`, `github/issue-3.md`를 참고해 issue 3개를 생성합니다.
 6. issue를 쓸 때는 `github/ISSUE-WRITING-GUIDE.md`를 함께 참고합니다.
-7. PR을 열 때는 `github/PR-WRITING-GUIDE.md`의 공통 틀과 예시를 사용합니다.
+7. PR을 열 때는 `github/PR-WRITING-GUIDE.md`의 공통 틀을 보고, 이번 실습용 예시는 `github/REVIEW-PR-EXAMPLES.md`를 참고합니다.
 8. 먼저 `QUICK-FLOW.md`만 보고 진행합니다.
 9. 정말 막히는 경우에만 `HINTS-AND-SOLUTION.md`를 참고합니다.
 
@@ -127,4 +128,5 @@ git push -u origin main
 
 - `issue-*.md`는 실제 GitHub issue 본문 예시입니다.
 - issue에는 어떤 정보가 들어가야 하는지에 대한 공통 원칙은 [github/ISSUE-WRITING-GUIDE.md](./github/ISSUE-WRITING-GUIDE.md)에 정리했습니다.
-- PR 본문에는 어떤 내용을 써야 하는지에 대한 공통 틀과 예시는 [github/PR-WRITING-GUIDE.md](./github/PR-WRITING-GUIDE.md)에 정리했습니다.
+- PR 본문의 일반 원칙은 [github/PR-WRITING-GUIDE.md](./github/PR-WRITING-GUIDE.md)에 정리했습니다.
+- 이번 복습 실습에서 바로 참고할 PR 예시는 [github/REVIEW-PR-EXAMPLES.md](./github/REVIEW-PR-EXAMPLES.md)에 정리했습니다.
