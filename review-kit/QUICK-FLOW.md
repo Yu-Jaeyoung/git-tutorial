@@ -25,7 +25,7 @@
   - 로컬에서 fast-forward 가능 상태를 확인
   - PR 생성 및 merge
 - PR 본문:
-  - `github/pr-1.md`
+  - `github/PR-WRITING-GUIDE.md`의 `Issue 1 example`
 - 스스로 확인할 질문:
   - 왜 이 상태는 fast-forward 가능하다고 말할 수 있는가
   - 왜 GitHub PR merge 결과와 로컬 fast-forward는 완전히 같지 않은가
@@ -48,7 +48,7 @@
   - `stash push -u`와 `stash pop` 실행
   - draft PR 생성
 - PR 본문:
-  - `github/pr-2.md`
+  - `github/PR-WRITING-GUIDE.md`의 `Issue 2 example`
 - 스스로 확인할 질문:
   - 왜 여기서는 commit보다 stash가 더 자연스러운가
   - `-u`가 없으면 어떤 파일이 빠지는가
@@ -73,8 +73,8 @@
   - `docs/release-checklist.md` conflict 해결하기
   - 기존 feature PR 업데이트 후 merge하기
 - PR 본문:
-  - hotfix PR: `github/pr-3-hotfix.md`
-  - feature PR: `github/pr-3-feature.md`
+  - hotfix PR: `github/PR-WRITING-GUIDE.md`의 `Issue 3 hotfix example`
+  - feature PR: `github/PR-WRITING-GUIDE.md`의 `Issue 3 feature example`
 - 스스로 확인할 질문:
   - 왜 여기서는 stash보다 worktree가 더 자연스러운가
   - 왜 마지막에는 merge commit과 conflict가 함께 생기는가

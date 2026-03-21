@@ -48,7 +48,7 @@ git branch -D verify/ff-issue-1
 ```
 
 이후 GitHub에서 `feature/release-intro -> main` PR을 만들고 merge합니다.  
-PR 본문은 `github/pr-1.md`를 사용합니다.
+PR 본문은 `github/PR-WRITING-GUIDE.md`의 `Issue 1 example`을 사용합니다.
 
 merge 뒤 로컬 동기화:
 
@@ -93,7 +93,7 @@ git push -u origin feature/login-notice
 ```
 
 GitHub에서 `feature/login-notice -> main` draft PR을 만듭니다. 이 PR은 아직 merge하지 않습니다.  
-PR 본문은 `github/pr-2.md`를 사용합니다.
+PR 본문은 `github/PR-WRITING-GUIDE.md`의 `Issue 2 example`을 사용합니다.
 
 ## 3. Issue 3 예시 풀이
 
@@ -130,7 +130,7 @@ git push -u origin hotfix/notice-typo
 ```
 
 GitHub에서 `hotfix/notice-typo -> main` PR을 만들고 먼저 merge합니다.  
-PR 본문은 `github/pr-3-hotfix.md`를 사용합니다.
+PR 본문은 `github/PR-WRITING-GUIDE.md`의 `Issue 3 hotfix example`을 사용합니다.
 
 원래 작업 디렉터리로 복귀:
 
@@ -163,4 +163,4 @@ git worktree list
 ```
 
 GitHub에서 기존 `feature/login-notice -> main` PR 본문을 업데이트하고 merge합니다.  
-최종 PR 본문은 `github/pr-3-feature.md`를 사용합니다.
+최종 PR 본문은 `github/PR-WRITING-GUIDE.md`의 `Issue 3 feature example`을 사용합니다.
