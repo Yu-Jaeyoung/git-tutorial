@@ -120,3 +120,20 @@ git push -u origin main
 - 막히면 [HINTS-AND-SOLUTION.md](./HINTS-AND-SOLUTION.md)를 참고합니다.
 - GitHub에 붙여넣을 issue/PR 문안은 `github/` 폴더를 봅니다.
 - 이 패키지는 `01~05` 복습 전용입니다. `rebase`, `revert`, `reset`, 협업 capstone은 포함하지 않습니다.
+
+## Issue 문안 읽는 법
+
+이 패키지의 `issue-*.md`는 “학습 질문지”가 아니라 실제 GitHub issue 본문에 바로 붙여넣을 수 있는 작업 지시서입니다.
+
+그래서 각 issue에는 아래 정보가 반드시 들어 있습니다.
+
+- 어떤 branch를 써야 하는가
+- 어떤 파일을 수정해야 하는가
+- 어떤 줄이나 값을 어떻게 바꿔야 하는가
+- 언제 완료로 볼 것인가
+
+반대로 아래 내용은 issue 본문보다 `QUICK-FLOW.md`나 `HINTS-AND-SOLUTION.md`에 둡니다.
+
+- 자세한 명령 예시
+- Git 선택 이유에 대한 해설
+- 막혔을 때의 참고 풀이
